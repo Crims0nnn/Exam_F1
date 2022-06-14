@@ -1,1 +1,6 @@
-﻿  D'Othello_Lyes.vcxproj -> C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Debug\D'Othello_Lyes.exe
+﻿  Main.cpp
+C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Othello_Lyes\placement.h(15,10): warning C4473: 'scanf_s' : nombre insuffisant d'arguments passés pour la chaîne de format
+C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Othello_Lyes\placement.h(15,10): message : les espaces réservés et leurs paramètres attendent des arguments 2 variadiques, mais des arguments 1 ont été fournis
+C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Othello_Lyes\placement.h(15,10): message : l'argument variadique manquant 2 est demandé par la chaîne de format '%c'
+C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Othello_Lyes\placement.h(15,10): message : cet argument est utilisé comme taille de mémoire tampon
+  D'Othello_Lyes.vcxproj -> C:\Users\Brahim Azzouz\Documents\GitHub\Exam\Exam_F1\Algo\Othello\Debug\D'Othello_Lyes.exe

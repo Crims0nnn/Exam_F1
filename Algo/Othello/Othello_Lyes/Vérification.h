@@ -7,10 +7,51 @@
 #include "Plateau.h"
 
 
-void verification(int x, char c) {
+void verification(int posx, int posy ) {
+	int erreur = 0; //Conteur si il arrive a 8 alors impossible de jouer le pion ici
+	int count = 1;
+	int pion = count % 2;
+	//Verif en bas
+	if (pion != 0) {
+		if (Tableau(posx + 1, posy) == 0 || Tableau(posx+1,posy)!=1) {
+			erreur++;
+		}
+		//verif en haut
+		if (Tableau(posx - 1, posy ) == 0 || Tableau(posx - 1, posy ) != 1) {
+			erreur++;
+		}
+		//verif droite
+		if (Tableau(posx , posy+1) == 0 || Tableau(posx , posy+1) != 1) {
+			erreur++;
+		}
+		//verif gauche
+		if (Tableau(posx , posy - 1) == 0 || Tableau(posx, posy - 1) != 1) {
+			erreur++;
+		}
+		//verif haut gauche
+		if (Tableau(posx-1, posy + 1) == 0 || Tableau(posx-1, posy + 1) != 1) {
+			erreur++;
+		}
+		//verif bas gauche
+		if (Tableau(posx + 1, posy + 1) == 0 || Tableau(posx + 1, posy + 1) != 1) {
+			erreur++;
+		}
+		//verif bas droit
+		if (Tableau(posx - 1, posy - 1) == 0 || Tableau(posx - 1, posy - 1) != 1) {
+			erreur++;
+		}
+		//verif haut droit
+		if (Tableau(posx + 1, posy - 1) == 0 || Tableau(posx + 1, posy - 1) != 1) {
+			erreur++;
+		}
+	}
+	printf("\n%d", erreur);
+}
+void pions() {
+
+}
+void conversion(int x, char c) {
 	printf_s("%d""%c", x, c);
-	int count = 0;
-	int erreur = 0;
 	int convert = 0;
 	//Permet de convertir la donnée char en int pour pouvoir être utiliser dans les positions
 	if (c == 'A') {
@@ -38,12 +79,8 @@ void verification(int x, char c) {
 		convert = 8;
 	}
 
-	
+	verification(convert,x);
 
 
 }
 
-void pions(int tab) {
-
-
-}

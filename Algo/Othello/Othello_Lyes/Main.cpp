@@ -4,16 +4,14 @@
 #include "placement.h"
 #include "Menu.cpp"
 #include "Menu.h"
-
-
+#include "Joueur.h"
 
 
 
 int main() {
 	
 	if (Menu()) {
-		Tableau();
-		position();
+		identite();
 		
 	}
 	else

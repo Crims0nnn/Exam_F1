@@ -143,6 +143,7 @@
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Joueur.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="placement.h" />
     <ClInclude Include="Plateau.h" />
