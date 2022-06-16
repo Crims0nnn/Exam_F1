@@ -1,5 +1,6 @@
 #pragma once
 #define TAILLE 8
+
 int test = 0;
 
 void affichage(int tabl[TAILLE][TAILLE]) {
@@ -34,8 +35,8 @@ void affichage(int tabl[TAILLE][TAILLE]) {
 int Tableau(int posx,int posy) {
 	int tab[TAILLE][TAILLE];
 	test++;
-	tab[3][3]=1;
-	tab[3][4]=2;
+	tab[3][3]=2	;
+	tab[3][4]=1;
 	tab[4][3]=1;
 	tab[4][4]=2;
 	for (int i = 0; i < TAILLE; i++) {

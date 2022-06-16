@@ -5,6 +5,7 @@
 #include "Menu.cpp"
 #include "Menu.h"
 #include "Joueur.h"
+#include "Vérification.h"
 
 
 
