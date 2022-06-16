@@ -1,0 +1,247 @@
+Programme Pricipale
+
+GLOBAL affichage=0 ENTIER
+GLOBAL stock=0 :ENTIER
+GLOBAL jouer=0 ENTIER
+GLOBAL J1[255] CHAINE CHARACTERE
+GLOBAL J2[255] CHAINE CHARACTERE
+GLOBAL n_TOUR=0 ENTIER
+
+VAR victoire =0 :ENTIER 
+VAR joueur
+
+procedure affich(int tablo[8][8] tableau ENTIER){
+DEBUT procedure
+
+ECRIRE("\n")
+ECRIRE("   A B C D E F G H")
+POUR i=0 de i a 8 i++
+FAIRE{
+    ECRIRE("\n")
+    ECRIRE("%d",i+1)
+    POUR j=0 de j a 8 j++
+    FAIRE{
+        ECRIRE(" ")
+         SI(tab[i][j]==1){
+                tab[i][j]=1;
+            }
+            ET SI(tab[i][j]==2){
+                tab[i][j]=2
+            }FINETSI
+            SINON{
+                tab[i][j]=0
+            }FINSINON
+            ECRIRE(tab[i][j])
+            SI j == 8-1 
+            FAIRE{
+                ECRIRE(i+1)
+            }
+    }
+}
+ECRIRE("\n")
+ECRIRE("  A B C D E F G H")
+}
+
+function Tableau(colonne ENTIER, ligne ENTIER){
+    DEBUT function
+    tab[8][8] tableau ENTIER //le tableau commance à 0 
+    affichage++;
+    tab[3][3]=2
+    tab[3][4]=1
+    tab[4][3]=1
+    tab[4][4]=2
+    POUR i=0 de i a 8 i++ 
+    FAIRE{
+        POUR j=0 de j a 8 j++
+        FAIRE{
+            SI(tab[i][j]==1){
+                tab[i][j]=1;
+            }
+            ET SI(tab[i][j]==2){
+                tab[i][j]=2
+            }FINETSI
+            SINON{
+                tab[i][j]=0
+            }FINSINON
+        }FINPOUR
+    }FINPOUR
+    SI affichage==8{
+        affich(tab);
+        affichage=0
+    }FINSI
+    retrun tab[colonne,ligne];
+}
+FIN function
+
+procedure verification(colonne ENTIER,ligne ENTIER){
+ DEBUT procedure
+int erreur=0;
+int count =1;
+int pion = count % 2
+
+//Joueur1 
+
+
+SI(pion !=0 && Tableau(colonne,ligne)==0){
+    //verif en bas de la case choisit
+    SI(Tableau(colonne,ligne+1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK bas")
+    }
+    //verif en haut de la case choisit
+    SI(Tableau(colonne,ligne-1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK haut")
+    }
+    //verif a gauche de la case choisit
+    SI(Tableau(colonne-1,ligne)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK gauche")
+    }
+    //verif a droite de la case choisit
+    SI(Tableau(colonne+1,ligne)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK droite")
+    }
+     //verif en haut a droite de la case choisit
+    SI(Tableau(colonne+1,ligne-1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK pour haut droite")
+    }
+     //verif en haut a gauche de la case choisit
+    SI(Tableau(colonne-1,ligne-1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK pour haut gauche")
+    }
+     //verif en bas a droite de la case choisit
+    SI(Tableau(colonne+1,ligne+1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK pour bas droite")
+    } 
+    //verif en bas a gauche de la case choisit
+    SI(Tableau(colonne-1,ligne+1)!=0){
+        erreur++;
+    }SINON{
+        ECRIRE("OK pour bas gauche")
+    }
+
+}
+
+
+
+conversion(CHARACTERE colonne,ENTIER ligne){
+    couvert=0 ENTIER
+    SI (colonne==A)
+    ALORSFAIRE
+    convert=0;
+    SI (colonne==B)
+    ALORSFAIRE
+    convert=1;
+    .
+    .
+    .
+    .
+    .
+    SI (colonne==H)
+    ALORSFAIRE
+    convert=7;
+
+    verification(couvert,ligne)
+}
+
+procedure position(){
+    colonne CHARACTERE
+    ligne=0 ENTIER
+ECRIRE("Quel colonne?")
+LIRE colonne
+ECRIRE("Quel ligne")
+LIRE ligne
+
+conversion(colonne,ligne)
+}
+
+procedure JOUEUR1 (CHARACTERE pseudo [255]){
+    ECRIRE("\n %s c'est a vous de jouer",pseudo)
+    position()
+
+}
+procedure JOUEUR2 (CHARACTERE pseudo [255]){
+    ECRIRE("\n %s c'est a vous de jouer",pseudo)
+    position()
+}
+
+procedure identification(int n_joueur)
+DEBUT procedure
+
+pseudo[255] CHAINE CHARACTERE
+pseudo2[255] CHAINE CHARACTERE
+couleur1=0 ENTIER
+couleur2=0 ENTIER
+
+SI (n_joueur == 1){
+ALORSFAIRE{
+    ECRIRE("Quel pseudo voulez vous joueur 1?")
+    LIRE pseudo
+    ECRIRE("Quel couleur voulez vous ?")
+    LIRE couleur1
+     ECRIRE("Quel pseudo voulez vous joueur 2?")
+    LIRE pseudo2
+    ECRIRE("Quel couleur voulez vous ?")
+    LIRE couleur2
+    COPIER(J1,pseudo,255)
+    COPIER(J2,pseudo2,255)
+    jouer=1
+    JOUEUR1(pseudo)
+    JOUEUR2(pseudo2)
+    }
+        ET SI(n_joueur == 2)
+        ALORSFAIRE{
+             ECRIRE("Quel pseudo voulez vous joueur 1?")
+             LIRE pseudo
+             COPIER(J1,pseudo,255)
+             jouer=2
+             JOUEUR1(pseudo)
+        }
+ }
+ FIN procedure
+function Menu(){
+DEBUT function
+
+booléan isRunning = NULL
+ECRIRE("Othello \n")
+ECRIRE("1.Jouer contre un autre joueur \n")
+ECRIRE("2.Jouer contre ordinateur \n")
+ECRIRE("3.Quitter \n")
+LIRE stock
+
+SI (stock == 1)
+ALORSFAIRE
+isRunning=true
+identification(stock)
+return isRunning
+} 
+    ET SI(stock == 2){
+        ALORSFAIRE
+        isRunning=true
+        identification(stock)
+        return isRunning
+    }
+        SINON{
+            isRunning=false
+            return isRunning
+        }
+        FINSINON
+    FINETSI
+FINSI
+
+FIN function
+
+
+       
