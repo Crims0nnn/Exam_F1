@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Plateau.h"
-#include "Joueur.h"
 
-int stock=0;
+
+
 bool Menu() {
-	
+	int stock;
 	bool isRunning = true;
 	printf_s("Othello \n");
 	printf_s("1.Jouer contre un autre joueur \n");
@@ -15,15 +15,8 @@ bool Menu() {
 	printf_s("3.Quitter \n");
 	scanf_s("%d", &stock);
 
-	if (stock == 1 ) {
+	if (stock == 1 || stock == 2) {
 		isRunning = true;
-		identite(stock);
-		return isRunning;
-
-	}
-	else if (stock==2) {
-		isRunning = true;
-		identite(stock);
 		return isRunning;
 	}
 	else {

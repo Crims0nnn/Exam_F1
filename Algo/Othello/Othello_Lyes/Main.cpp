@@ -4,29 +4,22 @@
 #include "placement.h"
 #include "Menu.cpp"
 #include "Menu.h"
-#include "Joueur.h"
-#include "Vérification.h"
+
+
 
 
 
 int main() {
-	Menu();
-	if (jouer == 1) {
-		while (partie < 64) {
-			Joueur1(J1);
-			Joueur2(J2);
-		}
+	
+	if (Menu()) {
+		Tableau();
+		position();
+		
 	}
-	else if (jouer ==2 ) {
-		while (partie < 64) {
-			Joueur1(J1);
-		}
-	}
-	else {
+	else
+	{
 		return 0;
 	}
-	
-	
 
 	
 }
