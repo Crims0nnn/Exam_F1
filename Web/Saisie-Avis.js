@@ -7,19 +7,19 @@ var contenue="";
 function formulaire(){
     
     var Genre=["Homme","Femme"];
-    var Jeux=["jeux de carte","jeux de plateau","jeux de dés","jeux de logique","jeux éducatif"];
+    var Jeux=["jeux de carte","jeux de plateau","jeux de des","jeux de logique","jeux educatif"];
     var JeuxCarte=["Uno","solitaire","Poker","Black Jack"];
     var JeuxPlateau=["Damier","Echec","Puzzle","Puissance 4"];
-    var JeuxDes=["Dé","Shut the box","Yams","421"];
+    var JeuxDes=["Yahtzee","Shut the box","Yams","421"];
     var JeuxLogique=["Pendu","Mastermind","Sudoku","Sokoban"];
     var JeuxEducatif=["Pigeon Pigeon","Complot","L'imposteur","Labyrinthe"];
+    var Note= ["1","2","3","4","5"];
     //copier un tableau dans un autre tableau
     
     var JeuxTous=JeuxCarte.concat(JeuxPlateau,JeuxDes,JeuxLogique,JeuxEducatif);
     
     //ajout d'un element dans un tableau
     
-
     contenue+="<form name='form' action='VotreAvis.html' method='get'>";
     contenue+= "<fieldset>";
     contenue+="<h3>Identité</h3>";
@@ -72,7 +72,7 @@ function formulaire(){
             contenue+="<div>";
             contenue+="<fieldset>";
         for(var j=0;j<JeuxCarte.length;j++){
-        contenue+= "<input type='checkbox' value='"+JeuxCarte[j]+"'name='carte'>"+JeuxCarte[j]+"</input>";
+        contenue+= "<input type='checkbox' value='"+JeuxCarte[j]+"'name='cartes'>"+JeuxCarte[j]+"</input>";
         }
         contenue+= "</fieldset>";
         contenue+="</div>";
@@ -87,20 +87,20 @@ function formulaire(){
             contenue+="</div>";
         }
             
-    if(Jeux[i]=="jeux de dés"){
+    if(Jeux[i]=="jeux de des"){
         contenue+="<div >";
         contenue+="<fieldset>";
         for(var j=0;j<JeuxDes.length;j++){
-        contenue+= "<input type='checkbox' value='"+JeuxDes[j]+"'name='dés'>"+JeuxDes[j]+"</input>";
+        contenue+= "<input type='checkbox' value='"+JeuxDes[j]+"'name='des'>"+JeuxDes[j]+"</input>";
         }
         contenue+= "</fieldset>";
         contenue+="</div>";
     }
-    if(Jeux[i]=="jeux éducatif"){
+    if(Jeux[i]=="jeux educatif"){
         contenue+="<div id='éducatif'>";
         contenue+="<fieldset>";
         for(var j=0;j<JeuxEducatif.length;j++){
-        contenue+= "<input type='checkbox' value='"+JeuxEducatif[j]+"'name='éducatif'>"+JeuxEducatif[j]+"</input>";
+        contenue+= "<input type='checkbox' value='"+JeuxEducatif[j]+"'name='educatif'>"+JeuxEducatif[j]+"</input>";
         }
         contenue+= "</fieldset>";
         contenue+="</div>";
@@ -119,7 +119,7 @@ function formulaire(){
     contenue+="<fieldset>";
     contenue+="<h3>Zone Avis</h3>";
     contenue+="<label>Selectionner le jeux</label>";
-    contenue+="<select id='select'>";
+    contenue+="<select id='select' name='Vote'>";
     for(var i=-1;i<JeuxTous.length;i++){
         if(i==-1){
             contenue+="<option value='-1'></option>";
@@ -132,10 +132,14 @@ function formulaire(){
     contenue+="<div>";
     contenue+="<textarea cols='40' rows='5' maxlength='200' placeholder='200 caractères max' name='Avis'></textarea>";
     contenue+="<label>Note</label>";
-    contenue+="<select id='test'>";
-    for(var i=1;i<=5;i++){
-        contenue+="<option value='"+i+"'>"+i+"</option>"
+    contenue+="<select id='test' name='Note'>";
+    for(var i=-1;i<5;i++){
+        if(i==-1){
+            contenue+="<option value='-1'></option>";
+        }else{
+        contenue+="<option value='"+Note[i]+"'>"+Note[i]+"</option>"
     }
+}
     contenue+="</select>";
     contenue+="</fieldset>";
     contenue+="<fieldset>";
@@ -245,10 +249,13 @@ function verification(){
     verif++;
 }
  //si une note est choisie
-    if(N>=1){
+    if(N=='-1'){
+        document.getElementById('test').style.boxShadow="0 0 0 2px red";
+    }else{
         document.getElementById('test').style.boxShadow="0 0 0 0px ";
+        verif++;
     }
-if(Email!=ConfirmationEmail){
+if(Email!=ConfirmationEmail||Email==""){
     document.getElementsByName('Email')[0].style.borderStyle="solid";
     document.getElementsByName('Email')[0].style.borderColor="red";
     document.getElementsByName('ConfirmationEmail')[0].style.borderStyle="solid";
@@ -258,7 +265,8 @@ if(Email!=ConfirmationEmail){
     document.getElementsByName('ConfirmationEmail')[0].style.borderStyle="none";
     verif++;
 }
-if(verif>=8){
+
+if(verif>=9){
     document.getElementsByName('form')[0].submit();
 }
 }
